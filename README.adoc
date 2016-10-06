@@ -1,0 +1,27 @@
+= How do you play with this wonderful docker
+
+== Create a static documentation
+
+[source, sh]
+----
+docker run -ti --name swag -v $(PWD)/swagger/swagger-v1.yml:/swagger.yml sjeandeaux/swagger-codegen-cli:2.2.1 generate -i /swagger.yml -o /swag-html2 -l html2
+docker cp swag:/swag-html2/index.html ./resources/
+docker rm swag
+----
+
+== Create a json documentation
+
+[source, sh]
+----
+docker run -ti --name swag -v $(PWD)/swagger/swagger-v1.yml:/swagger.yml sjeandeaux/swagger-codegen-cli:2.2.1 generate -i /swagger.yml -o /swag-swagger -l swagger
+docker cp swag:/swag-swagger/swagger.json ./resources/
+docker rm swag
+----
+
+
+=== FAQ:
+
+Why do you run in your container and copy? 
+
+If you share a volume and you write inside, you keep user and right from container so problems.
+
