@@ -4,7 +4,7 @@
 
 [source, sh]
 ----
-docker run -ti --name swag -v $(PWD)/swagger/swagger-v1.yml:/swagger.yml sjeandeaux/swagger-codegen-cli:2.2.1 generate -i /swagger.yml -o /swag-html2 -l html2
+docker run -ti --name swag -v $(PWD)/swagger/swagger-v1.yml:/swagger.yml sjeandeaux/docker-swagger-codegen-cli generate -i /swagger.yml -o /swag-html2 -l html2
 docker cp swag:/swag-html2/index.html ./resources/
 docker rm swag
 ----
@@ -13,7 +13,7 @@ docker rm swag
 
 [source, sh]
 ----
-docker run -ti --name swag -v $(PWD)/swagger/swagger-v1.yml:/swagger.yml sjeandeaux/swagger-codegen-cli:2.2.1 generate -i /swagger.yml -o /swag-swagger -l swagger
+docker run -ti --name swag -v $(PWD)/swagger/swagger-v1.yml:/swagger.yml sjeandeaux/docker-swagger-codegen-cli generate -i /swagger.yml -o /swag-swagger -l swagger
 docker cp swag:/swag-swagger/swagger.json ./resources/
 docker rm swag
 ----
